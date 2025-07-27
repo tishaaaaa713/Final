@@ -6,82 +6,54 @@
 <title>Happy Birthday Jaan ♥️</title>
 <style>
 body, html {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    background: black;
-    color: white;
+    margin: 0; padding: 0;
+    width: 100%; height: 100%;
+    background: black; color: white;
     font-family: Arial, sans-serif;
-    overflow: hidden;
-    text-align: center;
+    overflow: hidden; text-align: center;
 }
 #start-screen {
-    position: fixed;
-    top: 0; left: 0;
+    position: fixed; top: 0; left: 0;
     width: 100%; height: 100%;
     background: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    z-index: 10;
+    display: flex; justify-content: center; align-items: center;
+    flex-direction: column; z-index: 10;
 }
 #main-content { display: none; }
 button {
-    background: #ff4081;
-    border: none;
-    color: white;
-    padding: 15px 30px;
-    font-size: 1.5em;
-    border-radius: 30px;
+    background: #ff4081; border: none;
+    color: white; padding: 15px 30px;
+    font-size: 1.5em; border-radius: 30px;
     cursor: pointer;
 }
-h1 {
-    margin-top: 20px;
-    font-size: 2.5em;
-    text-shadow: 2px 2px 5px #ff4081;
-}
+h1 { margin-top: 20px; font-size: 2.5em; text-shadow: 2px 2px 5px #ff4081; }
 #countdown { font-size: 1.5em; margin: 20px 0; }
-.slideshow {
-    position: relative;
-    width: 80%;
-    max-width: 400px;
-    margin: 0 auto;
-}
+.slideshow { position: relative; width: 80%; max-width: 400px; margin: 0 auto; }
 .slide {
-    display: none;
-    width: 100%;
+    display: none; width: 100%;
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(255,255,255,0.5);
 }
 .slide.active { display: block; }
 #popup {
     display: none;
-    position: fixed;
-    top: 0; left: 0;
+    position: fixed; top: 0; left: 0;
     width: 100%; height: 100%;
     background: rgba(0,0,0,0.8);
-    justify-content: center;
-    align-items: center;
+    justify-content: center; align-items: center;
 }
 .popup-content {
-    background: white;
-    color: black;
-    padding: 20px;
-    border-radius: 15px;
-    text-align: center;
-    width: 90%;
-    max-width: 350px;
-    max-height: 80%;
-    overflow-y: auto;
+    background: white; color: black;
+    padding: 20px; border-radius: 15px;
+    text-align: center; width: 90%; max-width: 350px;
+    max-height: 80%; overflow-y: auto;
 }
 </style>
 </head>
 <body>
 <div id="start-screen">
     <h1>Happy Birthday, Jaan ♥️</h1>
-    <p>Tap to start the magic!</p>
+    <p>Tap to start your surprise!</p>
     <button onclick="startExperience()">Tap to Start</button>
 </div>
 
@@ -124,10 +96,9 @@ h1 {
 function startExperience() {
     document.getElementById('start-screen').style.display = 'none';
     document.getElementById('main-content').style.display = 'block';
+
     const audio = document.getElementById('bg-music');
-    audio.play().catch(() => {
-        console.log("Autoplay blocked, but site continues.");
-    });
+    audio.play().catch(() => console.log("Music blocked, site continues."));
 }
 
 // Countdown
@@ -192,5 +163,6 @@ animate();
 </script>
 </body>
 </html>
+
 
         
