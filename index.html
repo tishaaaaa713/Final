@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Jaan ♥️</title>
+<style>
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    text-align: center;
+}
+#start-screen {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 10;
+}
+#main-content {
+    display: none;
+}
+button {
+    background: #ff4081;
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.5em;
+    border-radius: 30px;
+    cursor: pointer;
+}
+h1 {
+    margin-top: 20px;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 5px #ff4081;
+}
+#countdown {
+    font-size: 1.5em;
+    margin: 20px 0;
+}
+.slideshow {
+    position: relative;
+    width: 80%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+.slide {
+    display: none;
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(255,255,255,0.5);
+}
+.slide.active {
+    display: block;
+}
+#popup {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+}
+.popup-content {
+    background: white;
+    color: black;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    width: 90%;
+    max-width: 350px;
+    max-height: 80%;
+    overflow-y: auto;
+}
+</style>
+</head>
+<body>
+<div id="start-screen">
+    <h1>Happy Birthday, Jaan ♥️</h1>
+    <p>Tap to start the music and open your surprise!</p>
+    <button onclick="startExperience()">Tap to Start</button>
+</div>
+
+<div id="main-content">
+    <canvas id="hearts"></canvas>
+
+    <h1>Happy Birthday, Jaan ♥️</h1>
+    <p>Counting down to your special day...</p>
+
+    <div id="countdown"></div>
+
+    <div class="slideshow">
+        <img src="photo1.jpg" class="slide active">
+        <img src="photo2.jpg" class="slide">
+        <img src="photo3.jpg" class="slide">
+    </div>
+
+    <button onclick="showMessage()">Click for a Surprise</button>
+
+    <div id="popup">
+        <div class="popup-content">
+            <h2>Happy Birthday, Jaan! 💖</h2>
+            <p>
+                Since the day I met you, my heart became yours, my mind became yours and my soul became yours.
+                Never in my wildest dreams I thought I'd get the most perfect man to ever exist, someone who loves me so deeply and loudly.
+                You don't even know how precious you are to me.
+                I want to spend my whole life with you and oh what a beautiful life it is going to be.
+                You are the beat to my heart, Jaan. I love you more than anything else in the whole world.
+                To the prettiest man I've ever seen, happy birthday once again, Jaan. 💌
+            </p>
+            <button onclick="closeMessage()">Close</button>
+        </div>
+    </div>
+</div>
+
+<audio id="bg-music" loop>
+    <source src="https://dl.dropboxusercontent.com/s/3k6ozw6xh0du0fx/beautiful-as-you.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function startExperience() {
+    document.getElementById('start-screen').style.display = 'none';
+    document.getElementById('main-content').style.display = 'block';
+    document.getElementById('bg-music').play();
+}
+
+// Countdown Timer
+const countdown = document.getElementById('countdown');
+const birthday = new Date("2025-07-29 00:00:00").getTime();
+setInterval(() => {
+    const now = new Date().getTime();
+    const distance = birthday - now;
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+}, 1000);
+
+// Slideshow
+let slideIndex = 0;
+const slides = document.querySelectorAll('.slide');
+setInterval(() => {
+    slides[slideIndex].classList.remove('active');
+    slideIndex = (slideIndex + 1) % slides.length;
+    slides[slideIndex].classList.add('active');
+}, 3000);
+
+// Surprise popup
+function showMessage() {
+    document.getElementById('popup').style.display = 'flex';
+}
+function closeMessage() {
+    document.getElementById('popup').style.display = 'none';
+}
+
+// Floating hearts (light pink)
+const canvas = document.getElementById('hearts');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+let hearts = [];
+function createHeart() {
+    return {
+        x: Math.random() * canvas.width,
+        y: canvas.height + 10,
+        size: Math.random() * 20 + 10,
+        speed: Math.random() * 2 + 1,
+        opacity: Math.random()
+    };
+}
+function drawHeart(x, y, size) {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Jaan ♥️</title>
+<style>
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    text-align: center;
+}
+#start-screen {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 10;
+}
+#main-content {
+    display: none;
+}
+button {
+    background: #ff4081;
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.5em;
+    border-radius: 30px;
+    cursor: pointer;
+}
+h1 {
+    margin-top: 20px;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 5px #ff4081;
+}
+#countdown {
+    font-size: 1.5em;
+    margin: 20px 0;
+}
+.slideshow {
+    position: relative;
+    width: 80%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+.slide {
+    display: none;
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(255,255,255,0.5);
+}
+.slide.active {
+    display: block;
+}
+#popup {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+}
+.popup-content {
+    background: white;
+    color: black;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    width: 90%;
+    max-width: 350px;
+    max-height: 80%;
+    overflow-y: auto;
+}
+</style>
+</head>
+<body>
+<div id="start-screen">
+    <h1>Happy Birthday, Jaan ♥️</h1>
+    <p>Tap to start the music and open your surprise!</p>
+    <button onclick="startExperience()">Tap to Start</button>
+</div>
+
+<div id="main-content">
+    <canvas id="hearts"></canvas>
+
+    <h1>Happy Birthday, Jaan ♥️</h1>
+    <p>Counting down to your special day...</p>
+
+    <div id="countdown"></div>
+
+    <div class="slideshow">
+        <img src="photo1.jpg" class="slide active">
+        <img src="photo2.jpg" class="slide">
+        <img src="photo3.jpg" class="slide">
+    </div>
+
+    <button onclick="showMessage()">Click for a Surprise</button>
+
+    <div id="popup">
+        <div class="popup-content">
+            <h2>Happy Birthday, Jaan! 💖</h2>
+            <p>
+                Since the day I met you, my heart became yours, my mind became yours and my soul became yours.
+                Never in my wildest dreams I thought I'd get the most perfect man to ever exist, someone who loves me so deeply and loudly.
+                You don't even know how precious you are to me.
+                I want to spend my whole life with you and oh what a beautiful life it is going to be.
+                You are the beat to my heart, Jaan. I love you more than anything else in the whole world.
+                To the prettiest man I've ever seen, happy birthday once again, Jaan. 💌
+            </p>
+            <button onclick="closeMessage()">Close</button>
+        </div>
+    </div>
+</div>
+
+<audio id="bg-music" loop>
+    <source src="https://dl.dropboxusercontent.com/s/3k6ozw6xh0du0fx/beautiful-as-you.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function startExperience() {
+    document.getElementById('start-screen').style.display = 'none';
+    document.getElementById('main-content').style.display = 'block';
+    document.getElementById('bg-music').play();
+}
+
+// Countdown Timer
+const countdown = document.getElementById('countdown');
+const birthday = new Date("2025-07-29 00:00:00").getTime();
+setInterval(() => {
+    const now = new Date().getTime();
+    const distance = birthday - now;
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+}, 1000);
+
+// Slideshow
+let slideIndex = 0;
+const slides = document.querySelectorAll('.slide');
+setInterval(() => {
+    slides[slideIndex].classList.remove('active');
+    slideIndex = (slideIndex + 1) % slides.length;
+    slides[slideIndex].classList.add('active');
+}, 3000);
+
+// Surprise popup
+function showMessage() {
+    document.getElementById('popup').style.display = 'flex';
+}
+function closeMessage() {
+    document.getElementById('popup').style.display = 'none';
+}
+
+// Floating hearts (light pink)
+const canvas = document.getElementById('hearts');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+let hearts = [];
+function createHeart() {
+    return {
+        x: Math.random() * canvas.width,
+        y: canvas.height + 10,
+        size: Math.random() * 20 + 10,
+        speed: Math.random() * 2 + 1,
+        opacity: Math.random()
+    };
+}
+function drawHeart(x, y, size) {
+    ctx.beginPath();
+    const topCurveHeight = size * 0.3;
+    ctx.moveTo(x, y + topCurveHeight);
+    ctx.bezierCurveTo(x, y, x - size / 2, y, x - size / 2, y + topCurveHeight);
+    ctx.bezierCurveTo(x - size / 2, y + (size + topCurveHeight) / 2, x, y + (size + topCurveHeight) / 2, x, y + size);
+    ctx.bezierCurveTo(x, y + (size + topCurveHeight) / 2, x + size / 2, y + (size + topCurveHeight) / 2, x + size / 2, y + topCurveHeight);
+    ctx.bezierCurveTo(x + size / 2, y, x, y, x, y + topCurveHeight);
+    ctx.closePath();
+    ctx.fillStyle = 'pink';
+    ctx.fill();
+}
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    hearts.forEach((h, i) => {
+        h.y -= h.speed;
+        ctx.globalAlpha = h.opacity;
+        drawHeart(h.x, h.y, h.size);
+        if (h.y < -10) hearts[i] = createHeart();
+    });
+    requestAnimationFrame(animate);
+};
+for (let i = 0; i < 30; i++) hearts.push(createHeart());
+animate();
+</script>
+</body>
+</html>
+        
